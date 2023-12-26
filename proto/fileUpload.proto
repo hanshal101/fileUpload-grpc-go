@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package ="github.com/hanshal101/fileUpload";
+
+message UploadRequest {
+    string fileName = 1;
+    bytes chunks = 2;
+}
+
+message UploadResponse {
+    string fileName = 1;
+    string fileSize = 2;
+}
+
+service Upload {
+    rpc FileUpload (stream UploadRequest) returns (UploadResponse);
+}
